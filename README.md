@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 User form to add, edit and delete user.  
 
-**json-server** server to simulate a server.  
+**json-server** to simulate a server.  
 
 **Launch mock server :** json-server --watch db.json  
 
