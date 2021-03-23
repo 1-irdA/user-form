@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Les utilisateurs</h1>
+  <div *ngFor="let user of users | async">
+    <div class="card my-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ user.lastName }}</h5>
+        <h6 class="card-subtitle text-muted">{{ user.firstName }}</h6>
+        <p class="card-text">{{ user.gender }}</p>
+        <button (click)="getUser(user.id)" class="btn btn-info text-light">Editer</button>
+        <button (click)="deleteUser(user.id)" class="btn btn-danger">Suppimer</button>
+      </div>
+    </div> <!-- card-->
+  </div> <!-- for -->
+
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label>Genre</label>
+      <select formControlName="gender" class="form-control">
+        <option value="Mr">Homme</option>
+        <option value="Mme">Femme</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" formControlName="lastName" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Prénom</label>
+      <input type="text" formControlName="firstName" class="form-control">
+    </div>
+
+    <button [disabled]="form.invalid" class="btn btn-dark mt-2" *ngIf="toUpdate === null" (click)="createUser()">Ajouter</button>
+    <button [disabled]="form.invalid" class="btn btn-dark mt-2" *ngIf="toUpdate" (click)="editUser()">Modifier</button>
+  </form>
+</div> <!-- container -->
